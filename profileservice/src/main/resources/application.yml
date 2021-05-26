@@ -1,1 +1,6 @@
-
+server:
+  port: 8081
+spring:
+  data:
+    mongodb:
+      uri: mongodb://profileservice:profileservice@127.0.0.1:27017/profileservice?authSource=profileservice
