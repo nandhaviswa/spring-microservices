@@ -1,0 +1,6 @@
+server:
+  port: 8080
+spring:
+  data:
+    mongodb:
+      uri: mongodb://userservice:userservice@127.0.0.1:27017/userservice?authSource=userservice

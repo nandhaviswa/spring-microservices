@@ -12,10 +12,10 @@ public class UserService {
     private UserRepository userRepository;
 
     public User create(User model){
-        return model;
+        return userRepository.save(model);
     }
 
     public List<User> list(){
-        return null;
+        return userRepository.findAll();
     }
 }
