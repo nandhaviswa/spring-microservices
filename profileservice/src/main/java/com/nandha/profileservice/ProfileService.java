@@ -1,6 +1,8 @@
 package com.nandha.profileservice;
 
+import com.nandha.common.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +35,10 @@ public class ProfileService {
 
     public List<Profile> list(){
         return profileRepository.findAll();
+    }
+
+    @KafkaListener(id = "foo",topics = "user.created")
+    public void listen(User record) {
+        userRepository.save(record);
     }
 }
