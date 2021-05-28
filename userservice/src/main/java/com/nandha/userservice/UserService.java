@@ -14,11 +14,13 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, User> kafkaTemplate;
+
+    private static final String TOPIC_NAME="user.created";
 
     public User create(User model){
         User saved=userRepository.save(model);
-        kafkaTemplate.send("user.create","nandha","nandha");
+        kafkaTemplate.send(UserService.TOPIC_NAME,saved.getUsername(),saved);
         return saved;
     }
 
