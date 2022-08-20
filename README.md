@@ -32,6 +32,10 @@ db.createUser({
 		{
 			role: 'dbAdmin',
 			db: 'userservice'
+		},
+		{
+			role: 'readWrite',
+			db: 'userservice'
 		}
 	]
 });
