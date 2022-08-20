@@ -4,9 +4,11 @@
 ```sh
 mvn install
 ```
-# user service
+# spring boot
 
-# profile service
+```sh
+clear && mvn clean spring-boot:run
+```
 
 # mongo db
 ```sh
