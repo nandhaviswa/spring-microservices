@@ -1,20 +1,30 @@
-# Getting Started
+# Sample Employee Spring boot
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Installation
+* Clone the [MySQL Sample Employee Database](https://dev.mysql.com/doc/employee/en/employees-installation.html)
+```sh
+git clone https://github.com/datacharmer/test_db.git
+cd test_db-master
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.3/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.3/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.3/reference/htmlsingle/#web)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.3/reference/htmlsingle/#data.sql.jpa-and-spring-data)
+docker run -d -v test_db-master:/tmp/test_db-master:ro --name employees-mysql -e MYSQL_ROOT_PASSWORD=root mysql:8.0
+docker exec -it employees-mysql /bin/sh
+cd /tmp/test_db-master
+mysql -uroot -proot
+```
+```sql
+DROP DATABASE IF EXISTS `employees`;
+CREATE DATABASE `employees`;
 
-### Guides
-The following guides illustrate how to use some features concretely:
+DROP USER IF EXISTS 'employees'@'%';
+CREATE USER 'employees'@'%' IDENTIFIED WITH mysql_native_password BY 'employees';
+GRANT ALL PRIVILEGES ON *.* TO 'employees'@'%' WITH GRANT OPTION;
+```
+```sh
+mysql -uemployees -pemployees -t < employees.sql
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
+docker run -d --name employees-adminer adminer
+
+docker inspect employees-mysql | grep IPAddress
+docker inspect employees-adminer | grep IPAddress
+```
 
