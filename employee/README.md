@@ -33,4 +33,7 @@ docker inspect employees-adminer | grep IPAddress
 ```sh
 clear && MYSQL_HOST=172.17.0.2 mvn clean spring-boot:run
 ```
+## API details
 
+GET /salary/view
+GET /employee/list
