@@ -4,6 +4,14 @@
 ```sh
 mvn install
 ```
+
+## user module
+```diff
+# subl userservice/src/main/resources/application.yml:6
+-      uri: mongodb://userservice:userservice@127.0.0.1:27017/userservice?authSource=userservice
++      uri: mongodb://userservice:userservice@172.17.0.2:27017/userservice?authSource=userservice
+```
+
 ## spring boot
 
 ```sh
