@@ -6,6 +6,7 @@ mvn install
 ```
 
 ## user module
+- Update the MongoDb host and other details. (Same for profile service as well)
 ```diff
 # subl userservice/src/main/resources/application.yml:6
 -      uri: mongodb://userservice:userservice@127.0.0.1:27017/userservice?authSource=userservice
