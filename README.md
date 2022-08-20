@@ -50,3 +50,13 @@ db.createUser({
 });
 
 ```
+## kafka
+```sh
+cd kafka_2.12-3.2.1
+bin/zookeeper-server-start.sh config/zookeeper.properties > logs/nnda-zookeeper.log &
+bin/kafka-server-start.sh config/server.properties > logs/nnda-kafka.log &
+
+bin/kafka-server-stop.sh
+bin/zookeeper-server-stop.sh
+
+```
