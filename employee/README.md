@@ -28,3 +28,9 @@ docker inspect employees-mysql | grep IPAddress
 docker inspect employees-adminer | grep IPAddress
 ```
 
+- Launch the application
+
+```sh
+clear && MYSQL_HOST=172.17.0.2 mvn clean spring-boot:run
+```
+
